@@ -1,0 +1,21 @@
+{
+    "controller": {
+
+    },
+
+    "logger": {
+        
+    },
+    
+    "main": {
+        "TLSCert": ".private/cert.pem",
+        "TLSKey": ".private/key.pem"
+    },
+    "model": {
+        
+            },
+        
+    "view": {
+                
+    }
+}

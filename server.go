@@ -4,12 +4,24 @@ import (
 	"crypto/tls"
 	"net/http"
 	"time"
+
+	"github.com/j0holo/web-framework/parser"
 )
 
 func main() {
+	config := parser.Config("./config.json")
+
+	srv := newServer()
+	defer srv.Close()
+
 	http.HandleFunc("/", indexHandler)
 
-	srv := http.Server{
+	go srv.ListenAndServeTLS(config.Main.TLSCert, config.Main.TLSKey)
+	srv.ListenAndServe()
+}
+
+func newServer() http.Server {
+	return http.Server{
 		Addr:    "0.0.0.0:8080",
 		Handler: nil,
 		TLSConfig: &tls.Config{
@@ -34,10 +46,6 @@ func main() {
 		ConnState:      nil,
 		ErrorLog:       nil,
 	}
-	defer srv.Close()
-
-	go srv.ListenAndServeTLS(".private/cert.pem", ".private/key.pem")
-	srv.ListenAndServe()
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
