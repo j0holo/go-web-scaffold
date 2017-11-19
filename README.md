@@ -18,8 +18,8 @@ The goal is to provide a simple scaffold to start quickly with developing new we
 - [README.md](./README.md)
 - [controller](./controller)    // Contains http.Handlers and Gorilla mux
   - [controller.go](./controller/controller.go)
-- [logger](./logger)            // Creates new loggers
-  - [logger.go](./logger/logger.go)
+- [log](./log)            // Creates new loggers
+  - [log.go](./log/log.go)
 - [model](./model)              // Creates database connections for MySQL and Memcached
   - [model.go](./model/model.go)
 - [parser](./parser)            // Parses `config.json` and contains function to provide settings for other modules
